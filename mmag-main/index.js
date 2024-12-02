@@ -9,9 +9,9 @@ canvas.width = 800;
 canvas.height = 600;
 
 const background = new Image();
-background.src = "images/space.jpg";
+changeToRandomBackground();
 
-const playerBulletController = new BulletController(canvas, 10, "red", true);
+const playerBulletController = new BulletController(canvas, 8, "red", true);
 const enemyBulletController = new BulletController(canvas, 4, "white", false);
 const enemyController = new EnemyController(
   canvas,
@@ -25,6 +25,7 @@ let didWin = false;
 
 function game() {
   checkGameOver();
+
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
   displayGameOver();
   if (!isGameOver) {
@@ -70,4 +71,8 @@ function checkGameOver() {
   }
 }
 
+function changeToRandomBackground() {
+  let randomBackgroundNum = Math.floor(Math.random() * 4 + 1);
+  background.src = `images/background${randomBackgroundNum}.jpg`;
+}
 setInterval(game, 1000 / 60);
