@@ -38,7 +38,7 @@ function game() {
 
 function displayGameOver() {
   if (isGameOver) {
-    let text = didWin ? "You Win" : "Game Over";
+    let text = didWin ? "easy win" : "GameOver";
 
     ctx.fillStyle = "white";
     ctx.font = "70px Arial";
