@@ -1,5 +1,6 @@
 canvas {
   box-shadow: 20px 10px 50px black;
+
 }
 h1 {
   margin: 0px;
@@ -16,3 +17,4 @@ body {
   background: linear-gradient(white, rgb(196, 196, 196));
   height: 100vh;
 }
+

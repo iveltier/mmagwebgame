@@ -15,8 +15,8 @@ export default class EnemyController {
   currentDirection = MovingDirection.right;
   xVelocity = 0;
   yVelocity = 0;
-  defaultXVelocity = 1;
-  defaultYVelocity = 1;
+  defaultXVelocity = 2;
+  defaultYVelocity = 2;
   moveDownTimerDefault = 30;
   moveDownTimer = this.moveDownTimerDefault;
   fireBulletTimerDefault = 80;
@@ -133,12 +133,14 @@ export default class EnemyController {
     });
   }
   createEnemies() {
+    const totalWidth = this.enemyMap[0].length * 50;
+    const startX = (this.canvas.width - totalWidth) / 2;
     this.enemyMap.forEach((row, rowIndex) => {
       this.enemyRows[rowIndex] = [];
       row.forEach((enemyNumber, enemyIndex) => {
         if (enemyNumber > 0) {
           this.enemyRows[rowIndex].push(
-            new Enemy(enemyIndex * 50, rowIndex * 35, enemyNumber)
+            new Enemy(startX + enemyIndex * 50, rowIndex * 35, enemyNumber)
           );
         }
       });
