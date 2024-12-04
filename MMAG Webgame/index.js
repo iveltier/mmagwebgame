@@ -13,6 +13,9 @@ restartBtn.addEventListener("click", () => {
   restartGame();
 });
 
+const winSound = new Audio("sounds/win-sound.wav");
+const loseSound = new Audio("sounds/lose-sound.wav");
+
 const background = new Image();
 changeToRandomBackground();
 
@@ -43,10 +46,13 @@ function game() {
 
 function displayGameOver() {
   if (isGameOver) {
-    let text = didWin ? "easy win" : "GameOver";
+    let text = didWin ? "easy win" : "Game Over";
 
     ctx.fillStyle = "white";
-    ctx.font = "70px Arial";
+    ctx.font = "70px Hyper Oxide";
+    ctx.shadowColor = "black";
+    ctx.shadowOffsetX = 3;
+    ctx.shadowOffsetY = 3;
 
     let textWidth = ctx.measureText(text).width;
 
@@ -54,6 +60,10 @@ function displayGameOver() {
     let yPosition = canvas.height / 2;
 
     ctx.fillText(text, xPosition, yPosition);
+
+    ctx.shadowColor = "transparent";
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
 
     restartBtn.style.display = "Block";
   }
@@ -65,14 +75,17 @@ function checkGameOver() {
   }
 
   if (enemyController.collideWith(player)) {
+    loseSound.play();
     isGameOver = true;
   }
 
   if (enemyBulletController.collideWith(player)) {
+    loseSound.play();
     isGameOver = true;
   }
 
   if (enemyController.enemyRows.length === 0) {
+    winSound.play();
     didWin = true;
     isGameOver = true;
   }

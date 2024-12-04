@@ -1,3 +1,12 @@
+@font-face {
+  font-family: Lunar Escape;
+  src: url("fonts/Lunar Escape.otf");
+}
+@font-face {
+  font-family: Hyper Oxide;
+  src: url("fonts/Hyper Oxide.ttf");
+}
+
 canvas {
   box-shadow: 20px 10px 50px black;
   position: absolute;
@@ -24,6 +33,24 @@ body {
 #restartBtn {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 44px;
+
+  font-family: Hyper Oxide;
+  background: transparent;
+  border-radius: 25px;
+  border: none;
+  padding: 20px;
+  padding-top: 25px;
+  color: hsl(0, 0%, 80%);
+  text-align: center;
+  text-shadow: 3px 3px black;
+}
+
+#restartBtn:hover {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.24);
+  color: white;
 }
