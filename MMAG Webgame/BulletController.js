@@ -49,4 +49,8 @@ export default class BulletController {
     }
     return false;
   }
+
+  reset() {
+    this.bullets = [];
+  }
 }

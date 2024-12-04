@@ -8,6 +8,11 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 600;
 
+const restartBtn = document.getElementById("restartBtn");
+restartBtn.addEventListener("click", () => {
+  restartGame();
+});
+
 const background = new Image();
 changeToRandomBackground();
 
@@ -49,6 +54,8 @@ function displayGameOver() {
     let yPosition = canvas.height / 2;
 
     ctx.fillText(text, xPosition, yPosition);
+
+    restartBtn.style.display = "Block";
   }
 }
 
@@ -76,3 +83,18 @@ function changeToRandomBackground() {
   background.src = `images/background${randomBackgroundNum}.jpg`;
 }
 setInterval(game, 1000 / 60);
+
+function restartGame() {
+  didWin = false;
+  isGameOver = false;
+
+  changeToRandomBackground();
+
+  player.reset();
+  enemyController.reset();
+
+  playerBulletController.reset();
+  enemyBulletController.reset();
+
+  restartBtn.style.display = "none";
+}

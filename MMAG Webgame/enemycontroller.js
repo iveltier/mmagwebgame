@@ -150,4 +150,15 @@ export default class EnemyController {
   collideWith(sprite) {
     return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
   }
+
+  reset() {
+    this.enemyRows = [];
+    this.enemyRows = [];
+    this.currentDirection = MovingDirection.right;
+    this.xVelocity = 0;
+    this.yVelocity = 0;
+    this.moveDownTimer = this.moveDownTimerDefault;
+    this.fireBulletTimer = this.fireBulletTimerDefault;
+    this.createEnemies();
+  }
 }
