@@ -1,10 +1,12 @@
 ToDo:
 
+enemys gehen nach unten raus lösung
+
 Weihnachtsmodus
 
-Fullscreen + zurück mit esc
+zurück mit esc
 
-von lukas assats holen
+assets implementieren
 
 mehr background + hochauflösender
 
@@ -14,12 +16,16 @@ transparentes Logo
 
 start screen
 
-change difficulty 
+change difficulty
 
 hintergrundmusic (?) hintergrundbild (?)
-
-project in program (.exe) machen
 
 Überschrift ändern
 
 favicon ändern
+
+
+fullscreen => isstopped = false einfürhen bei didwin etc
+
+wenn man esc im fullscreen macht läuft game weiter
+ 

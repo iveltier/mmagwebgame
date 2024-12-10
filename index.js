@@ -4,9 +4,13 @@ import BulletController from "./BulletController.js";
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+const body = document.body;
 
-canvas.width = 800;
-canvas.height = 600;
+let canvasDefaultWidth = 800;
+let canvasDefaultHeight = 600;
+
+canvas.width = canvasDefaultWidth;
+canvas.height = canvasDefaultHeight;
 
 const restartBtn = document.getElementById("restartBtn");
 restartBtn.addEventListener("click", () => {
@@ -111,3 +115,24 @@ function restartGame() {
 
   restartBtn.style.display = "none";
 }
+function enableFullscreen() {
+  if (didWin == true || isGameOver == true) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.getElementById("sign").style.color = "white";
+    enemyController.defaultXVelocity = 4;
+    enemyController.defaultYVelocity = 4;
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        canvas.width = canvasDefaultWidth;
+        canvas.height = canvasDefaultHeight;
+        document.getElementById("sign").style.color = "black";
+        enemyController.defaultXVelocity = 2;
+        enemyController.defaultYVelocity = 2;
+      }
+    });
+  }
+}
+
+window.enableFullscreen = enableFullscreen;
