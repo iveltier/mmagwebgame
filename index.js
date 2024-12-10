@@ -4,7 +4,6 @@ import BulletController from "./BulletController.js";
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
-const body = document.body;
 
 let canvasDefaultWidth = 800;
 let canvasDefaultHeight = 600;
@@ -120,8 +119,17 @@ function enableFullscreen() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     document.getElementById("sign").style.color = "white";
-    enemyController.defaultXVelocity = 4;
-    enemyController.defaultYVelocity = 4;
+    enemyController.enemyMap = [
+      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 2, 2, 2, 3, 3, 3, 3, 3, 2, 2, 2, 1],
+      [1, 2, 2, 2, 3, 3, 3, 3, 3, 2, 2, 2, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    ];
+    enemyController.defaultXVelocity = 3;
+    enemyController.defaultYVelocity = 3;
+    player.velocity = 4;
 
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
@@ -130,8 +138,21 @@ function enableFullscreen() {
         document.getElementById("sign").style.color = "black";
         enemyController.defaultXVelocity = 2;
         enemyController.defaultYVelocity = 2;
+        isGameOver = true;
+        enemyController.enemyMap = [
+          [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
+          [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
+          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        ];
       }
     });
+  } else {
+    alert(
+      "Das Spiel muss beendet sein, bevor der Fullscreen-Modus aktiviert werden kann."
+    );
   }
 }
 
