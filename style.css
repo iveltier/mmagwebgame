@@ -71,7 +71,10 @@ h1 {
   cursor: pointer;
   width: 89%;
   height: 5rem;
-  margin: 10px auto;
+  margin: 10px;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
 #dropdown-container button:active {
@@ -161,7 +164,8 @@ a:visited {
     font-size: 2rem;
   }
   #dropdown-container {
-    max-width: 20%;
+    white-space: nowrap;
+    max-width: 11%;
   }
   #dropdown-container button {
     font-size: 1rem;
@@ -175,12 +179,12 @@ a:visited {
   }
   canvas {
     box-shadow: none;
-    max-width: 80%;
+    max-width: 70%;
     max-height: 80%;
   }
 
   #restartBtn {
-    font-size: 2em;
+    font-size: 1.5em;
     padding: 15px;
   }
 
@@ -196,7 +200,6 @@ a:visited {
   }
   #dropdown-container button {
     font-size: 0.6rem;
-    padding: 2px;
   }
 }
 
@@ -208,10 +211,22 @@ a:visited {
   }
 
   h1 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 
   #restartBtn {
-    font-size: 1em;
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 370px) {
+  h1 {
+    font-size: 1rem;
+  }
+  #dropdown-container {
+    max-height: 70%;
+    height: fit-content;
+    overflow-y: auto;
+    scroll-behavior: smooth;
   }
 }
