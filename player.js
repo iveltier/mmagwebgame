@@ -14,10 +14,20 @@ export default class Player {
     this.width = 50;
     this.height = 48;
     this.image = new Image();
-    this.image.src = "images/player.png";
+    this.image.src = "images/assets/player.png";
 
+    // Tastatur-Events
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
+
+    // Touch-Events
+    this.canvas.addEventListener("touchstart", this.touchstart, {
+      passive: true,
+    });
+    this.canvas.addEventListener("touchend", this.touchend, { passive: true });
+    this.canvas.addEventListener("touchmove", this.touchmove, {
+      passive: true,
+    });
   }
 
   draw(ctx) {
@@ -30,15 +40,14 @@ export default class Player {
   }
 
   collideWithWalls() {
-    // left
     if (this.x < 0) {
       this.x = 0;
     }
-    //right
     if (this.x > this.canvas.width - this.width) {
       this.x = this.canvas.width - this.width;
     }
   }
+
   move() {
     if (this.rightPressed) {
       this.x += this.velocity;
@@ -47,6 +56,7 @@ export default class Player {
     }
   }
 
+  // Tastatur-Events
   keydown = (event) => {
     if (event.code == "ArrowRight" || event.code == "KeyD") {
       this.rightPressed = true;
@@ -68,6 +78,41 @@ export default class Player {
     }
     if (event.code == "Space") {
       this.shootPressed = false;
+    }
+  };
+
+  // Touch-Events
+  touchstart = (event) => {
+    const touchX = event.touches[0].clientX;
+
+    if (touchX < this.canvas.width / 2) {
+      this.leftPressed = true;
+    } else {
+      this.rightPressed = true;
+    }
+
+    // Schießen durch Berührung am oberen Bereich des Canvas
+    if (event.touches[0].clientY < this.y) {
+      this.shootPressed = true;
+    }
+  };
+
+  touchend = () => {
+    this.leftPressed = false;
+    this.rightPressed = false;
+    this.shootPressed = false;
+  };
+
+  touchmove = (event) => {
+    const touchX = event.touches[0].clientX;
+
+    // Spieler bewegt sich nach links oder rechts basierend auf der Position der Berührung
+    if (touchX < this.canvas.width / 2) {
+      this.leftPressed = true;
+      this.rightPressed = false;
+    } else {
+      this.rightPressed = true;
+      this.leftPressed = false;
     }
   };
 

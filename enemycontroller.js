@@ -12,6 +12,8 @@ export default class EnemyController {
 
   enemyRows = [];
 
+  enemyReachedBottom = false;
+
   currentDirection = MovingDirection.right;
   xVelocity = 0;
   yVelocity = 0;
@@ -41,6 +43,7 @@ export default class EnemyController {
     this.drawEnemies(ctx);
     this.resetMoveDownTimer();
     this.fireBullet();
+    this.checkEnemiesAtBottom();
   }
 
   collisionDetection() {
@@ -160,5 +163,13 @@ export default class EnemyController {
     this.moveDownTimer = this.moveDownTimerDefault;
     this.fireBulletTimer = this.fireBulletTimerDefault;
     this.createEnemies();
+  }
+
+  checkEnemiesAtBottom() {
+    this.enemyRows.flat().forEach((enemy) => {
+      if (enemy.y + enemy.height >= this.canvas.height) {
+        this.enemyReachedBottom = true;
+      }
+    });
   }
 }

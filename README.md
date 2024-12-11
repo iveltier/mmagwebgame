@@ -1,22 +1,13 @@
-ToDo:
-
-enemys gehen nach unten raus lösung
+# ToDo:
 
 Weihnachtsmodus
 
-
-assets implementieren
-
-mehr background + hochauflösender
+lukas muss neue assets machen farben froher und größer weniger details
 
 random generator für enemyMap
-
 
 start screen
 
 change difficulty
 
-hintergrundmusic (?) hintergrundbild (?)
-
 Überschrift ändern
-

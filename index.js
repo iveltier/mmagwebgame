@@ -92,11 +92,11 @@ function checkGameOver() {
     didWin = true;
     isGameOver = true;
   }
-}
 
-function changeToRandomBackground() {
-  let randomBackgroundNum = Math.floor(Math.random() * 4 + 1);
-  background.src = `images/background${randomBackgroundNum}.jpg`;
+  if (enemyController.enemyReachedBottom) {
+    loseSound.play();
+    isGameOver = true;
+  }
 }
 setInterval(game, 1000 / 60);
 
@@ -104,6 +104,7 @@ function restartGame() {
   isLandscape();
   didWin = false;
   isGameOver = false;
+  enemyController.enemyReachedBottom = false;
 
   changeToRandomBackground();
 
@@ -115,6 +116,14 @@ function restartGame() {
 
   restartBtn.style.display = "none";
 }
+
+//Extra functions
+
+function changeToRandomBackground() {
+  let randomBackgroundNum = Math.floor(Math.random() * 7 + 1);
+  background.src = `images/assets/background${randomBackgroundNum}.jpg`;
+}
+
 function enableFullscreen() {
   if (window.innerHeight > window.innerWidth) {
     alert("Please rotate your device");
@@ -166,11 +175,22 @@ function enableFullscreen() {
   }
 }
 
+// optimisation for mobile devices (ask user to rotate device)
+
 function isLandscape() {
   if (window.innerWidth < window.innerHeight) {
     alert("Please rotate your device for optimal game expierience");
   }
 }
+
+// stop game with esc
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    loseSound.play();
+    isGameOver = true;
+  }
+});
 
 window.isLandscape = isLandscape;
 
