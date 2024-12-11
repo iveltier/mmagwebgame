@@ -101,6 +101,7 @@ function changeToRandomBackground() {
 setInterval(game, 1000 / 60);
 
 function restartGame() {
+  isLandscape();
   didWin = false;
   isGameOver = false;
 
@@ -115,7 +116,16 @@ function restartGame() {
   restartBtn.style.display = "none";
 }
 function enableFullscreen() {
-  if (didWin == true || isGameOver == true) {
+  if (window.innerHeight > window.innerWidth) {
+    alert("Please rotate your device");
+    return;
+  }
+  if (window.innerHeight < canvas.height) {
+    alert("Fullscreen not supported");
+    return;
+  }
+
+  if (isGameOver) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     document.getElementById("sign").style.color = "white";
@@ -155,5 +165,13 @@ function enableFullscreen() {
     );
   }
 }
+
+function isLandscape() {
+  if (window.innerWidth < window.innerHeight) {
+    alert("Please rotate your device for optimal game expierience");
+  }
+}
+
+window.isLandscape = isLandscape;
 
 window.enableFullscreen = enableFullscreen;
