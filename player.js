@@ -21,13 +21,9 @@ export default class Player {
     document.addEventListener("keyup", this.keyup);
 
     // Touch-Events
-    this.canvas.addEventListener("touchstart", this.touchstart, {
-      passive: true,
-    });
-    this.canvas.addEventListener("touchend", this.touchend, { passive: true });
-    this.canvas.addEventListener("touchmove", this.touchmove, {
-      passive: true,
-    });
+    this.canvas.addEventListener("touchstart", this.touchstart);
+    this.canvas.addEventListener("touchend", this.touchend);
+    this.canvas.addEventListener("touchmove", this.touchmove);
   }
 
   draw(ctx) {
@@ -81,33 +77,35 @@ export default class Player {
     }
   };
 
-  // Touch-Events
+  // Touch events
   touchstart = (event) => {
-    const touchX = event.touches[0].clientX;
+    event.preventDefault();
+    const touch = event.touches[0];
+    const { clientX, clientY } = touch;
+    const middleX = window.innerWidth / 2;
 
-    if (touchX < this.canvas.width / 2) {
+    if (clientX < middleX) {
       this.leftPressed = true;
+      this.shootPressed = true;
     } else {
       this.rightPressed = true;
-    }
-
-    // Schießen durch Berührung am oberen Bereich des Canvas
-    if (event.touches[0].clientY < this.y) {
       this.shootPressed = true;
     }
   };
 
-  touchend = () => {
-    this.leftPressed = false;
+  touchend = (event) => {
+    event.preventDefault();
     this.rightPressed = false;
+    this.leftPressed = false;
     this.shootPressed = false;
   };
 
   touchmove = (event) => {
-    const touchX = event.touches[0].clientX;
+    event.preventDefault();
+    const touch = event.touches[0];
+    const { clientX } = touch;
 
-    // Spieler bewegt sich nach links oder rechts basierend auf der Position der Berührung
-    if (touchX < this.canvas.width / 2) {
+    if (clientX < window.innerWidth / 2) {
       this.leftPressed = true;
       this.rightPressed = false;
     } else {

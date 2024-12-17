@@ -1,14 +1,7 @@
 import Enemy from "./enemy.js";
 import MovingDirection from "./MovingDirection.js";
 export default class EnemyController {
-  enemyMap = [
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
-    [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  ];
+  enemyMap = [];
 
   enemyRows = [];
 
@@ -17,7 +10,7 @@ export default class EnemyController {
   currentDirection = MovingDirection.right;
   xVelocity = 0;
   yVelocity = 0;
-  defaultXVelocity = 2;
+  defaultXVelocity = 1.5;
   defaultYVelocity = 2;
   moveDownTimerDefault = 30;
   moveDownTimer = this.moveDownTimerDefault;
@@ -135,9 +128,17 @@ export default class EnemyController {
       enemy.draw(ctx);
     });
   }
+
   createEnemies() {
+    const rows = 6;
+    const cols = 11;
+    const maxEnemyType = 6;
+
+    this.enemyMap = this.generateRandomEnemyMap(rows, cols, maxEnemyType);
+
     const totalWidth = this.enemyMap[0].length * 50;
     const startX = (this.canvas.width - totalWidth) / 2;
+
     this.enemyMap.forEach((row, rowIndex) => {
       this.enemyRows[rowIndex] = [];
       row.forEach((enemyNumber, enemyIndex) => {
@@ -171,5 +172,18 @@ export default class EnemyController {
         this.enemyReachedBottom = true;
       }
     });
+  }
+
+  generateRandomEnemyMap(rows, cols, maxEnemyType) {
+    const enemyMap = [];
+    for (let i = 0; i < rows; i++) {
+      const row = [];
+      for (let j = 0; j < cols; j++) {
+        const enemyType = Math.floor(Math.random() * (maxEnemyType + 1));
+        row.push(enemyType);
+      }
+      enemyMap.push(row);
+    }
+    return enemyMap;
   }
 }

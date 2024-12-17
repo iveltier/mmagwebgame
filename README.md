@@ -1,13 +1,11 @@
 # ToDo:
 
-Weihnachtsmodus
+- Weihnachtsmodus
 
-lukas muss neue assets machen farben froher und größer weniger details
+- lukas muss neue assets machen farben froher und größer weniger details
 
-random generator für enemyMap
+- start screen
 
-start screen
+- change difficulty
 
-change difficulty
-
-Überschrift ändern
+- Überschrift ändern

@@ -6,7 +6,7 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 let canvasDefaultWidth = 800;
-let canvasDefaultHeight = 600;
+let canvasDefaultHeight = 700;
 
 canvas.width = canvasDefaultWidth;
 canvas.height = canvasDefaultHeight;
@@ -189,6 +189,12 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     loseSound.play();
     isGameOver = true;
+  }
+});
+// restart game with enter
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    restartGame();
   }
 });
 
