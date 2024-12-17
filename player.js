@@ -14,7 +14,7 @@ export default class Player {
     this.width = 50;
     this.height = 48;
     this.image = new Image();
-    this.image.src = "images/assets/player.png";
+    this.image.src = "images/assets/standard/player.png";
 
     // Tastatur-Events
     document.addEventListener("keydown", this.keydown);

@@ -1,12 +1,15 @@
 import EnemyController from "./enemycontroller.js";
 import Player from "./player.js";
 import BulletController from "./BulletController.js";
+import Enemy from "./enemy.js";
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 let canvasDefaultWidth = 800;
 let canvasDefaultHeight = 700;
+
+let isGamemodeactive = false;
 
 canvas.width = canvasDefaultWidth;
 canvas.height = canvasDefaultHeight;
@@ -120,8 +123,10 @@ function restartGame() {
 //Extra functions
 
 function changeToRandomBackground() {
-  let randomBackgroundNum = Math.floor(Math.random() * 7 + 1);
-  background.src = `images/assets/background${randomBackgroundNum}.jpg`;
+  if (!isGamemodeactive) {
+    let randomBackgroundNum = Math.floor(Math.random() * 7 + 1);
+    background.src = `images/assets/standard/background${randomBackgroundNum}.jpg`;
+  }
 }
 
 function enableFullscreen() {
@@ -198,6 +203,23 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+function enableWeihnachtsmodus() {
+  isGamemodeactive = true;
+  //restartGame();
+
+  // random background
+  let randomBackgroundNum = Math.floor(Math.random() * 2 + 1);
+  background.src = `images/assets/weihnachtsmodus/weihnachtsbackground${randomBackgroundNum}.jpg`;
+
+  // enemy
+
+  //  enemyController.switchToWeihnachtsmodus();
+
+  //player
+  player.image.src = "images/assets/weihnachtsmodus/weihnachtsplayer.png";
+}
 window.isLandscape = isLandscape;
 
 window.enableFullscreen = enableFullscreen;
+
+window.enableWeihnachtsmodus = enableWeihnachtsmodus;

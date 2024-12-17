@@ -6,7 +6,7 @@ export default class Enemy {
     this.height = 32;
 
     this.image = new Image();
-    this.image.src = `images/assets/enemy${imageNumber}.png`;
+    this.image.src = `images/assets/standard/enemy${imageNumber}.png`;
   }
 
   draw(ctx) {
