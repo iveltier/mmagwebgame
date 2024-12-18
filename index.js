@@ -109,7 +109,13 @@ function restartGame() {
   isGameOver = false;
   enemyController.enemyReachedBottom = false;
 
-  changeToRandomBackground();
+  if (isGamemodeactive) {
+    isGamemodeactive = false;
+    changeToRandomBackground();
+    player.image.src = "images/assets/standard/player.png";
+  } else {
+    changeToRandomBackground();
+  }
 
   player.reset();
   enemyController.reset();
