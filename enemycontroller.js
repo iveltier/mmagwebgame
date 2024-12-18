@@ -193,8 +193,8 @@ export default class EnemyController {
   switchToWeihnachtsmodus() {
     this.enemyRows.forEach((enemyRow, rowIndex) => {
       enemyRow.forEach((enemy, enemyIndex) => {
-        const randomEnemyType = Math.floor(Math.random() * 3) + 1;
-        enemy.image.src = `images/assets/weihnachtsmodus/weihnachtsEnemy${randomEnemyType}.png`;
+        const randomEnemyType = Math.floor(Math.random() * 6) + 1;
+        enemy.image.src = `images/assets/weihnachtsmodus/Wenemy${randomEnemyType}.png`;
       });
     });
   }

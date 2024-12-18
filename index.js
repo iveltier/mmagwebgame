@@ -194,21 +194,6 @@ function isLandscape() {
   }
 }
 
-// stop game with esc
-
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    loseSound.play();
-    isGameOver = true;
-  }
-});
-// restart game with enter
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    restartGame();
-  }
-});
-
 function enableWeihnachtsmodus() {
   restartGame();
   isGamemodeactive = true;
@@ -229,3 +214,28 @@ window.isLandscape = isLandscape;
 window.enableFullscreen = enableFullscreen;
 
 window.enableWeihnachtsmodus = enableWeihnachtsmodus;
+
+/* SHORTCUTS */
+
+// stop game with esc
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    loseSound.play();
+    isGameOver = true;
+  }
+});
+// restart game with enter
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    restartGame();
+  }
+});
+
+// enable Weihnachtsmodus
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "h") {
+    enableWeihnachtsmodus();
+  }
+});
