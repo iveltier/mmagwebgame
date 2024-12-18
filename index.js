@@ -204,8 +204,8 @@ window.addEventListener("keydown", (event) => {
 });
 
 function enableWeihnachtsmodus() {
+  restartGame();
   isGamemodeactive = true;
-  //restartGame();
 
   // random background
   let randomBackgroundNum = Math.floor(Math.random() * 2 + 1);
@@ -213,7 +213,7 @@ function enableWeihnachtsmodus() {
 
   // enemy
 
-  //  enemyController.switchToWeihnachtsmodus();
+  enemyController.switchToWeihnachtsmodus();
 
   //player
   player.image.src = "images/assets/weihnachtsmodus/weihnachtsplayer.png";

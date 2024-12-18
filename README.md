@@ -10,7 +10,6 @@
 
 # Weihnachtsmodus
 
-- andere assets
-- enemys gefixed bekommen
+- andere assets selber machen -> normal enemy mit mütze etc
 - toggle
 - sound

@@ -7,6 +7,10 @@ export default class EnemyController {
 
   enemyReachedBottom = false;
 
+  rows = 6;
+  cols = 11;
+  maxEnemyType = 6;
+
   currentDirection = MovingDirection.right;
   xVelocity = 0;
   yVelocity = 0;
@@ -130,11 +134,11 @@ export default class EnemyController {
   }
 
   createEnemies() {
-    const rows = 6;
-    const cols = 11;
-    const maxEnemyType = 6;
-
-    this.enemyMap = this.generateRandomEnemyMap(rows, cols, maxEnemyType);
+    this.enemyMap = this.generateRandomEnemyMap(
+      this.rows,
+      this.cols,
+      this.maxEnemyType
+    );
 
     const totalWidth = this.enemyMap[0].length * 50;
     const startX = (this.canvas.width - totalWidth) / 2;
@@ -143,8 +147,9 @@ export default class EnemyController {
       this.enemyRows[rowIndex] = [];
       row.forEach((enemyNumber, enemyIndex) => {
         if (enemyNumber > 0) {
+          let imageSrc = `images/assets/standard/enemy${enemyNumber}.png`;
           this.enemyRows[rowIndex].push(
-            new Enemy(startX + enemyIndex * 50, rowIndex * 35, enemyNumber)
+            new Enemy(startX + enemyIndex * 50, rowIndex * 35, imageSrc)
           );
         }
       });
@@ -156,7 +161,6 @@ export default class EnemyController {
   }
 
   reset() {
-    this.enemyRows = [];
     this.enemyRows = [];
     this.currentDirection = MovingDirection.right;
     this.xVelocity = 0;
@@ -185,5 +189,13 @@ export default class EnemyController {
       enemyMap.push(row);
     }
     return enemyMap;
+  }
+  switchToWeihnachtsmodus() {
+    this.enemyRows.forEach((enemyRow, rowIndex) => {
+      enemyRow.forEach((enemy, enemyIndex) => {
+        const randomEnemyType = Math.floor(Math.random() * 3) + 1;
+        enemy.image.src = `images/assets/weihnachtsmodus/weihnachtsEnemy${randomEnemyType}.png`;
+      });
+    });
   }
 }
