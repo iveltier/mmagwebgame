@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M&M-AG Webgame 🚀👽</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="#" />
+    <link
+      rel="shortcut icon"
+      href="images/icons/favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body onload="isLandscape()">
+    <a href="https://ehrenberg-gymnasium.de/c/29-mandm-AG" target="_blank"
+      ><img
+        src="images/icons/podcast weihnachten logo.png"
+        alt="podcast logo"
+        id="podcastLogo"
+    /></a>
+    <div id="dropdown-container">
+      <img src="images\icons\settings.png" alt="settingsIcon" id="settings" />
+      <div class="content">
+        <button onclick="enableWeihnachtsmodus()">Weihnachtsmodus</button>
+        <button onclick="enableFullscreen()">Fullscreen</button>
+        <button>Schwierigkeit ändern</button>
+      </div>
+    </div>
+    <h1>M&M-AG Webgame</h1>
+
+    <canvas id="game"></canvas>
+    <button id="restartBtn" onclick="restartGame()">Neustart</button>
+    <footer>
+      <h4 id="sign">
+        made by
+        <a href="https://github.com/iveltier" target="_blank"> iveltier 🍪</a>
+      </h4>
+    </footer>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

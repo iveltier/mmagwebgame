@@ -1,0 +1,232 @@
+/* fonts */
+
+@font-face {
+  font-family: Lunar Escape;
+  src: url("fonts/Lunar Escape.otf");
+}
+@font-face {
+  font-family: Hyper Oxide;
+  src: url("fonts/Hyper Oxide.ttf");
+}
+
+/* body */
+
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(white, rgb(196, 196, 196));
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* überschrift */
+
+h1 {
+  margin: 10px;
+  font-size: 3rem;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+/* Dropdown */
+
+#dropdown-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: rgba(128, 128, 128, 0.171);
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+  transition: all 0.6s ease;
+}
+
+#dropdown-container .content {
+  display: none;
+  flex-direction: column;
+}
+
+#dropdown-container:hover {
+  height: auto;
+  width: 16%;
+}
+
+#dropdown-container:hover .content {
+  display: flex;
+}
+
+#dropdown-container button {
+  font-family: monospace;
+  font-size: 1.5rem;
+  color: black;
+  background: hsla(0, 0%, 100%, 0.255);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 3px 3px hsla(0, 0%, 60%, 0.2);
+  cursor: pointer;
+  width: 89%;
+  height: 5rem;
+  margin: 10px;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+#dropdown-container button:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+/* Logo */
+
+#podcastLogo {
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 14, 58%;
+  height: 15%;
+}
+/* canvas + restart BTN */
+
+canvas {
+  box-shadow: 20px 10px 50px black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#restartBtn {
+  display: none;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.8em;
+  font-family: Hyper Oxide;
+  background: transparent;
+  border-radius: 25px;
+  border: none;
+  padding: 20px;
+  color: hsl(0, 0%, 80%);
+  text-shadow: 3px 3px black;
+  transition: backdrop-filter 0.2s ease-in-out,
+    background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#restartBtn:hover {
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.24);
+  color: white;
+}
+
+/* footer */
+
+#sign {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2px;
+  right: 10px;
+  font-size: 1.2rem;
+}
+
+/* links */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+/* Responsive Design  */
+@media (max-width: 1200px) {
+  canvas {
+    box-shadow: none;
+    max-width: 80%;
+    max-height: 70%;
+  }
+  #restartBtn {
+    font-size: 1.5rem;
+    padding: 15px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  #dropdown-container {
+    white-space: nowrap;
+    max-width: 11%;
+  }
+  #dropdown-container button {
+    font-size: 1rem;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  canvas {
+    box-shadow: none;
+    max-width: 70%;
+    max-height: 80%;
+  }
+
+  #restartBtn {
+    font-size: 1.5em;
+    padding: 15px;
+  }
+
+  #podcastLogo {
+    max-height: 8%;
+  }
+
+  #sign {
+    font-size: 0.7em;
+  }
+  #dropdown-container {
+    max-width: 10%;
+  }
+  #dropdown-container button {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  canvas {
+    box-shadow: none;
+    max-width: 80%;
+    max-height: 80%;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  #restartBtn {
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 370px) {
+  h1 {
+    font-size: 1rem;
+  }
+  #dropdown-container {
+    max-height: 70%;
+    height: fit-content;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+}
