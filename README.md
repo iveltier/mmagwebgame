@@ -5,3 +5,5 @@
 - change difficulty
 
 - Überschrift ändern
+
+- unedlich modus
