@@ -101,22 +101,42 @@ function displayGameOver() {
     ctx.shadowOffsetY = 3;
 
     let textWidth = ctx.measureText(text).width;
-
     let xPosition = (canvas.width - textWidth) / 2;
-    let yPosition = canvas.height / 2;
+    let yPosition = canvas.height / 2 - 100;
 
     ctx.fillText(text, xPosition, yPosition);
 
-    if (!didWin) {
-      xPosition = (canvas.width - textWidth) / 2 + 40;
-    }
     ctx.fillStyle = "white";
-    ctx.font = "30px Hyper Oxide";
+    ctx.font = "25px Hyper Oxide";
+
+    let enemiesDefeatedText = `Enemies Defeated: ${enemyController.defeatedEnemiesCount}`;
+    let bulletsShotText = `Bullets shot: ${playerBulletController.bulletsShot}`;
+    let hitRateText = `Hit Rate: ${Math.floor(
+      (100 * enemyController.defeatedEnemiesCount) /
+        playerBulletController.bulletsShot
+    )}%`;
+
+    let enemiesDefeatedTextWidth = ctx.measureText(enemiesDefeatedText).width;
+    let bulletsShotTextWidth = ctx.measureText(bulletsShotText).width;
+    let hitRateTextWidth = ctx.measureText(hitRateText).width;
+
+    let enemiesDefeatedXPosition =
+      (canvas.width - enemiesDefeatedTextWidth) / 2;
+    let bulletsShotXPosition = (canvas.width - bulletsShotTextWidth) / 2;
+    let hitRateXPosition = (canvas.width - hitRateTextWidth) / 2;
+
+    let enemiesDefeatedYPosition = yPosition + 50;
+    let bulletsShotYPosition = yPosition + 100;
+    let hitRateYPosition = yPosition + 150;
+
     ctx.fillText(
-      `Enemies Defeated: ${enemyController.defeatedEnemiesCount}`,
-      xPosition,
-      yPosition - 100
+      enemiesDefeatedText,
+      enemiesDefeatedXPosition,
+      enemiesDefeatedYPosition
     );
+    ctx.fillText(bulletsShotText, bulletsShotXPosition, bulletsShotYPosition);
+
+    ctx.fillText(hitRateText, hitRateXPosition, hitRateYPosition);
 
     ctx.shadowColor = "transparent";
     ctx.shadowOffsetX = 0;
@@ -392,10 +412,11 @@ window.addEventListener("keydown", (event) => {
     switch (event.key) {
       //Stop Game with Esc
       case "Escape":
-        loseSound.play();
-        isGameOver = true;
-        break;
-
+        if (!isGameOver) {
+          loseSound.play();
+          isGameOver = true;
+          break;
+        }
       //Restart Game with Enter
       case "Enter":
         restartGame();
