@@ -23,6 +23,8 @@ let isGameOver = false;
 let didWin = false;
 let isInfinite = false;
 let didInfiniteLose = false;
+let backgroundMusicPlaying = false;
+let backgroundMusic = null;
 
 const background = new Image();
 changeToRandomBackground();
@@ -86,11 +88,14 @@ function displayGameOver() {
 
     ctx.fillText(text, xPosition, yPosition);
 
+    if (!didWin) {
+      xPosition = (canvas.width - textWidth) / 2 + 40;
+    }
     ctx.fillStyle = "white";
     ctx.font = "30px Hyper Oxide";
     ctx.fillText(
       `Enemies Defeated: ${enemyController.defeatedEnemiesCount}`,
-      xPosition + 50,
+      xPosition,
       yPosition - 100
     );
 
@@ -191,14 +196,7 @@ function enableFullscreen() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     document.getElementById("sign").style.color = "white";
-    enemyController.enemyMap = [
-      [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 2, 2, 2, 3, 3, 3, 3, 3, 2, 2, 2, 1],
-      [1, 2, 2, 2, 3, 3, 3, 3, 3, 2, 2, 2, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-    ];
+
     enemyController.defaultXVelocity = 3;
     enemyController.defaultYVelocity = 3;
     player.velocity = 4;
@@ -211,19 +209,11 @@ function enableFullscreen() {
         enemyController.defaultXVelocity = 2;
         enemyController.defaultYVelocity = 2;
         isGameOver = true;
-        enemyController.enemyMap = [
-          [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
-          [2, 2, 2, 3, 3, 3, 3, 2, 2, 2],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-        ];
       }
     });
   } else {
     alert(
-      "Das Spiel muss beendet sein, bevor der Fullscreen-Modus aktiviert werden kann."
+      "The game is currently running. Please stop the game before entering fullscreen mode"
     );
   }
 }
@@ -276,6 +266,10 @@ window.addEventListener("keydown", (event) => {
       //Fullscreen with f
       case "f":
         enableFullscreen();
+        break;
+      //Backgroundmusic with m
+      case "m":
+        playBackgroundmusic();
         break;
     }
   }
@@ -352,6 +346,23 @@ function infinite() {
   isInfinite = true;
 }
 
+function playBackgroundmusic() {
+  if (!backgroundMusicPlaying) {
+    backgroundMusicPlaying = true;
+
+    let randomBackgroundmusicNum = Math.floor(Math.random() * 5 + 1);
+    backgroundMusic = new Audio(
+      `sounds/backgroundmusic/backgroundmusic${randomBackgroundmusicNum}.mp3`
+    );
+
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+  } else {
+    backgroundMusicPlaying = false;
+    backgroundMusic.pause();
+  }
+}
+
 window.restartGame = restartGame;
 window.isLandscape = isLandscape;
 
@@ -367,3 +378,4 @@ window.hard = hard;
 window.extreme = extreme;
 window.infinite = infinite;
 window.showChangeDifficultyPopup = showChangeDifficultyPopup;
+window.playBackgroundmusic = playBackgroundmusic;
