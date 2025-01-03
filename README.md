@@ -1,4 +1,24 @@
-# ToDo:
+# Selfmade Space Invaders Game
 
-- phases
+Little SpaceInvaders inspired game with diffrent difficulties. Project Idea by the Multimedia-AG.
 
+Move with A/D or ←/→ and shoot with Space. There is also a mobile support. Please rotate your device for the best expierience.
+
+Hover over the settings-icon to get some extra features.
+
+> fullscreen does not work really work
+
+In infinitemode eliminated enemys are getting count and the game gets progressvely harder.
+
+You can play it here: [M&MAG-Webgame](iveltier.github.com/mmagwebgame)
+
+## Shortcuts :
+
+- esc = end game
+- enter = restart
+- m = new backgroundmusic
+- f = fullscreen
+- h = christmasmode
+- i = infinitemode
+
+<sub>03.01.2025 iveltier</sub>

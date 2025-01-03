@@ -69,6 +69,25 @@ function game() {
   if (isInfinite) {
     displayCurrentGameMode.textContent = enemyController.defeatedEnemiesCount;
   }
+
+  if (enemyController.defeatedEnemiesCount === 50) {
+    phase2();
+  }
+  if (enemyController.defeatedEnemiesCount === 100) {
+    phase3();
+  }
+  if (enemyController.defeatedEnemiesCount === 150) {
+    phase4();
+  }
+  if (enemyController.defeatedEnemiesCount === 200) {
+    phase5();
+  }
+  if (enemyController.defeatedEnemiesCount === 250) {
+    phase6();
+  }
+  if (enemyController.defeatedEnemiesCount === 300) {
+    phase7();
+  }
 }
 
 function displayGameOver() {
@@ -218,7 +237,7 @@ function enableFullscreen() {
   }
 }
 
-// optimisation for mobile devices (ask user to rotate device)
+// optimisation for mobile devices (ask user to m device)
 
 function isLandscape() {
   if (window.innerWidth < window.innerHeight) {
@@ -243,37 +262,6 @@ function enableWeihnachtsmodus() {
   playerBulletController.bulletColor = "green";
   player.image.src = IMAGE_PATHS.WEIHNACHTS_PLAYER;
 }
-
-/* SHORTCUTS */
-
-window.addEventListener("keydown", (event) => {
-  if (!isGameStopped) {
-    switch (event.key) {
-      //Stop Game with Esc
-      case "Escape":
-        loseSound.play();
-        isGameOver = true;
-        break;
-
-      //Restart Game with Enter
-      case "Enter":
-        restartGame();
-        break;
-      //Weihnachtsmodus with h
-      case "h":
-        enableWeihnachtsmodus();
-        break;
-      //Fullscreen with f
-      case "f":
-        enableFullscreen();
-        break;
-      //Backgroundmusic with m
-      case "m":
-        playBackgroundmusic();
-        break;
-    }
-  }
-});
 
 function showStartPopup() {
   startPopup.style.display = "block";
@@ -362,6 +350,74 @@ function playBackgroundmusic() {
     backgroundMusic.pause();
   }
 }
+
+function phase2() {
+  enemyController.defaultXVelocity = 1.2;
+  enemyController.defaultYVelocity = 1.5;
+}
+
+function phase3() {
+  enemyController.defaultXVelocity = 1.5;
+  enemyController.defaultYVelocity = 2;
+}
+function phase4() {
+  enemyController.defaultXVelocity = 2;
+  enemyController.defaultYVelocity = 3;
+}
+function phase5() {
+  enemyController.defaultXVelocity = 3.5;
+  enemyController.defaultYVelocity = 3;
+  player.velocity = 4;
+  playerBulletController.maxBulletsAtTime = 12;
+}
+
+function phase6() {
+  enemyController.defaultXVelocity = 3.5;
+  enemyController.defaultYVelocity = 3.5;
+  player.velocity = 5;
+  playerBulletController.maxBulletsAtTime = 15;
+}
+
+function phase7() {
+  enemyController.defaultXVelocity = 4;
+  enemyController.defaultYVelocity = 4;
+  player.velocity = 5;
+  playerBulletController.maxBulletsAtTime = 15;
+}
+
+/* SHORTCUTS */
+
+window.addEventListener("keydown", (event) => {
+  if (!isGameStopped) {
+    switch (event.key) {
+      //Stop Game with Esc
+      case "Escape":
+        loseSound.play();
+        isGameOver = true;
+        break;
+
+      //Restart Game with Enter
+      case "Enter":
+        restartGame();
+        break;
+      //Weihnachtsmodus with h
+      case "h":
+        enableWeihnachtsmodus();
+        break;
+      //Fullscreen with f
+      case "f":
+        enableFullscreen();
+        break;
+      //Backgroundmusic with m
+      case "m":
+        playBackgroundmusic();
+        break;
+      case "i":
+        infinite();
+        break;
+    }
+  }
+});
 
 window.restartGame = restartGame;
 window.isLandscape = isLandscape;
