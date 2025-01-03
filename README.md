@@ -1,9 +1,5 @@
 # ToDo:
 
-- start screen
+- phases
 
-- change difficulty
-
-- Überschrift ändern
-
-- unedlich modus
+- bei win ist counter verschoben
