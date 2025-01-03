@@ -1,6 +1,6 @@
 # Selfmade Space Invaders Game
 
-Little SpaceInvaders inspired game with diffrent difficulties. Project Idea by the Multimedia-AG.
+Little SpaceInvaders inspired game with diffrent difficulties. Project Idea by the Multimedia-AG. Original - Tutorial by [Coding With Adam](https://www.youtube.com/watch?v=qCBiKJbLcFI&t=3384s)
 
 Move with A/D or ←/→ and shoot with Space. There is also a mobile support. Please rotate your device for the best expierience.
 
@@ -10,7 +10,7 @@ Hover over the settings-icon to get some extra features.
 
 In infinitemode eliminated enemys are getting count and the game gets progressvely harder.
 
-You can play it here: [M&MAG-Webgame](iveltier.github.com/mmagwebgame)
+You can play it here: [M&MAG-Webgame](iveltier.github.io/mmagwebgame)
 
 ## Shortcuts :
 
