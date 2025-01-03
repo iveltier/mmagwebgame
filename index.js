@@ -32,12 +32,12 @@ const restartBtn = document.getElementById("restartBtn");
 
 const IMAGE_PATHS = {
   STANDARD_PLAYER: "images/assets/standard/player.png",
-  WEIHNACHTS_PLAYER: "images/assets/weihnachtsmodus/weihnachtsplayer.png",
+  CHRISTMAS_PLAYER: "images/assets/christmasmode/christmasplayer.png",
 };
 
 const winSound = new Audio("sounds/win-sound.wav");
 const loseSound = new Audio("sounds/lose-sound.wav");
-const WModusEnter = new Audio("sounds/WModusEnter.mp3");
+const CModusEnter = new Audio("sounds/CModusEnter.mp3");
 
 const playerBulletController = new BulletController(canvas, 8, "red", true);
 const enemyBulletController = new BulletController(canvas, 4, "white", false);
@@ -265,22 +265,22 @@ function isLandscape() {
   }
 }
 
-function enableWeihnachtsmodus() {
-  WModusEnter.play();
+function enableChristmasmode() {
+  CModusEnter.play();
   restartGame();
   isGamemodeactive = true;
 
   // random background
   let randomBackgroundNum = Math.floor(Math.random() * 6 + 1);
-  background.src = `images/assets/weihnachtsmodus/Wbackground${randomBackgroundNum}.jpg`;
+  background.src = `images/assets/christmasmode/Cbackground${randomBackgroundNum}.jpg`;
 
   // enemy
 
-  enemyController.switchToWeihnachtsmodus();
+  enemyController.switchToChristmasmode();
 
   //player
   playerBulletController.bulletColor = "green";
-  player.image.src = IMAGE_PATHS.WEIHNACHTS_PLAYER;
+  player.image.src = IMAGE_PATHS.CHRISTMAS_PLAYER;
 }
 
 function showStartPopup() {
@@ -421,9 +421,9 @@ window.addEventListener("keydown", (event) => {
       case "Enter":
         restartGame();
         break;
-      //Weihnachtsmodus with h
+      //Christmasmode with h
       case "h":
-        enableWeihnachtsmodus();
+        enableChristmasmode();
         break;
       //Fullscreen with f
       case "f":
@@ -445,7 +445,7 @@ window.isLandscape = isLandscape;
 
 window.enableFullscreen = enableFullscreen;
 
-window.enableWeihnachtsmodus = enableWeihnachtsmodus;
+window.enableChristmasmode = enableChristmasmode;
 
 window.start = start;
 
