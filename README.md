@@ -4,4 +4,6 @@
 
 - change difficulty
 
-- (Überschrift ändern)
+- Überschrift ändern
+
+- unedlich modus
