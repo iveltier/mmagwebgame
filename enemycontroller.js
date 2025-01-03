@@ -7,6 +7,8 @@ export default class EnemyController {
 
   enemyReachedBottom = false;
 
+  defeatedEnemiesCount = 0;
+
   rows = 6;
   cols = 11;
   maxEnemyType = 6;
@@ -51,6 +53,7 @@ export default class EnemyController {
 
           this.enemyDeathSound.play();
           enemyRow.splice(enemyIndex, 1);
+          this.defeatedEnemiesCount++;
         }
       });
     });
@@ -160,13 +163,17 @@ export default class EnemyController {
     return this.enemyRows.flat().some((enemy) => enemy.collideWith(sprite));
   }
 
-  reset() {
+  reset(isInfinite) {
     this.enemyRows = [];
     this.currentDirection = MovingDirection.right;
     this.xVelocity = 0;
     this.yVelocity = 0;
     this.moveDownTimer = this.moveDownTimerDefault;
     this.fireBulletTimer = this.fireBulletTimerDefault;
+    if (!isInfinite) {
+      this.defeatedEnemiesCount = 0;
+    }
+
     this.createEnemies();
   }
 

@@ -12,31 +12,96 @@
       type="image/x-icon"
     />
   </head>
-  <body onload="isLandscape()">
+  <body onload="start()">
+    <h1 id="displayCurrentGamemode"></h1>
+    <!--startPopup-->
+
+    <div id="startPopup" class="popup">
+      <h1>M&M-AG Webgame</h1>
+      <h3>move with</h3>
+
+      <div class="button-row">
+        <button class="directionButton">A</button>
+        <button class="directionButton">D</button>
+      </div>
+
+      <h3>or</h3>
+
+      <div class="button-row">
+        <button class="directionButton">←</button>
+        <button class="directionButton">→</button>
+      </div>
+
+      <h3>shoot with</h3>
+      <div class="button-row">
+        <button id="spaceButton">SPACE</button>
+      </div>
+      <h3>choose your difficulty</h3>
+
+      <div class="button-row">
+        <button class="difficultyButton" onclick="easy()">easy</button>
+        <button class="difficultyButton" onclick="medium()">medium</button>
+        <button class="difficultyButton" onclick="hard()">hard</button>
+        <button class="difficultyButton" onclick="extreme()">extreme</button>
+        <button class="difficultyButton" onclick="infinite()">infinite</button>
+      </div>
+    </div>
+
+    <!--changeDifficultyPopup-->
+
+    <div id="changeDifficultyPopup" class="popup">
+      <div class="button-row">
+        <button class="difficultyButton" onclick="easy()">easy</button>
+        <button class="difficultyButton" onclick="medium()">medium</button>
+      </div>
+
+      <div class="button-row">
+        <button class="difficultyButton" onclick="hard()">hard</button>
+        <button class="difficultyButton" onclick="extreme()">extreme</button>
+      </div>
+
+      <div class="button-row">
+        <button class="difficultyButton" onclick="infinite()">infinite</button>
+      </div>
+    </div>
+
+    <!--logo-->
+
     <a href="https://ehrenberg-gymnasium.de/c/29-mandm-AG" target="_blank"
       ><img
         src="images/icons/podcast weihnachten logo.png"
         alt="podcast logo"
         id="podcastLogo"
     /></a>
+
+    <!--settings-->
+
     <div id="dropdown-container">
       <img src="images\icons\settings.png" alt="settingsIcon" id="settings" />
       <div class="content">
         <button onclick="enableWeihnachtsmodus()">Weihnachtsmodus</button>
         <button onclick="enableFullscreen()">Fullscreen</button>
-        <button>Schwierigkeit ändern</button>
+        <button onclick="showChangeDifficultyPopup()">
+          Schwierigkeit ändern
+        </button>
       </div>
     </div>
-    <h1>M&M-AG Webgame</h1>
 
+    <!--game-->
     <canvas id="game"></canvas>
     <button id="restartBtn" onclick="restartGame()">Neustart</button>
+
+    <!--footer-->
+
     <footer>
       <h4 id="sign">
         made by
         <a href="https://github.com/iveltier" target="_blank"> iveltier 🍪</a>
       </h4>
     </footer>
+
+    <!--scripts-->
+
     <script src="index.js" type="module"></script>
   </body>
 </html>
