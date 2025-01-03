@@ -191,6 +191,7 @@ function restartGame() {
     changeToRandomBackground();
     playerBulletController.bulletColor = "red";
     player.image.src = IMAGE_PATHS.STANDARD_PLAYER;
+    backgroundMusic.pause();
   } else if (!isInfinite) {
     changeToRandomBackground();
   }
@@ -281,6 +282,12 @@ function enableChristmasmode() {
   //player
   playerBulletController.bulletColor = "green";
   player.image.src = IMAGE_PATHS.CHRISTMAS_PLAYER;
+
+  // sound
+  backgroundMusic.pause();
+  backgroundMusic = new Audio("sounds/backgroundmusic/christmasmusic.mp3");
+  backgroundMusic.loop = true;
+  backgroundMusic.play();
 }
 
 function showStartPopup() {
@@ -355,6 +362,9 @@ function infinite() {
 }
 
 function playBackgroundmusic() {
+  if (isGamemodeactive) {
+    backgroundMusic = new Audio("sounds/backgroundmusic/christmasmusic.mp3");
+  }
   if (!backgroundMusicPlaying) {
     backgroundMusicPlaying = true;
 
