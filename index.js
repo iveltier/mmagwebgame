@@ -351,6 +351,7 @@ function extreme() {
 }
 
 function infinite() {
+  restartGame();
   isGameStopped = false;
 
   settings.style.display = "block";
@@ -359,6 +360,11 @@ function infinite() {
   displayCurrentGameMode.textContent = "Infinite";
 
   isInfinite = true;
+  enemyController.defaultXVelocity = 1;
+  enemyController.defaultYVelocity = 1;
+
+  player.velocity = 3;
+  playerBulletController.maxBulletsAtTime = 8;
 }
 
 function playBackgroundmusic() {

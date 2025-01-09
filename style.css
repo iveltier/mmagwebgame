@@ -279,7 +279,7 @@ a:visited {
   }
   #dropdown-container {
     white-space: nowrap;
-    max-width: 11%;
+    max-width: 33%;
   }
   #dropdown-container button {
     font-size: 1rem;
@@ -309,12 +309,12 @@ a:visited {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   canvas {
     box-shadow: none;
     max-width: 70%;
-    max-height: 80%;
+    max-height: 75%;
   }
 
   #restartBtn {
@@ -330,7 +330,7 @@ a:visited {
     font-size: 0.7em;
   }
   #dropdown-container {
-    max-width: 10%;
+    max-width: 17%;
   }
   #dropdown-container button {
     font-size: 0.6rem;

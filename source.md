@@ -57,3 +57,5 @@
 
 - Lunar Escape: [1001fonts](https://www.1001fonts.com/lunar-escape-font.html)
 - Hyper Oxide: [1001fonts](https://www.1001fonts.com/hyper-oxide-font.html)
+
+everything else is selfmade

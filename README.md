@@ -21,4 +21,5 @@ You can play it here: [M&MAG-Webgame](https://iveltier.github.io/mmagwebgame/)
 - h = christmasmode
 - i = infinitemode
 
+<sub>Sources: [Source.md](source.md) </sub>
 <sub>03.01.2025 iveltier</sub>
